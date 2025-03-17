@@ -1,0 +1,22 @@
+
+networks:
+    network:
+        name: docker-network
+        driver: bridge
+
+services:
+    nginx:
+        container_name: nginx
+        build: ./requirements/nginx
+        image: nginx:1.26.2
+        restart: always
+        env_file: .env
+        #depends_on:
+         # wordpress:
+          #  condition: service_healthy
+        networks:
+          - network
+        ports:
+          - "443:443"
+        #volumes:
+         # - wordpress:/var/www/html
