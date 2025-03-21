@@ -6,20 +6,20 @@ YELLOW=$(shell echo -e "\033[1;33m")
 RED=$(shell echo -e "\033[1;31m")
 
 # Paths
-#DATA_DIR=/home/vvaalant/data
-#MARIADB_DIR=$(DATA_DIR)/mariadb
-#WORDPRESS_DIR=$(DATA_DIR)/wordpress
+DATA_DIR=/home/vvaalant/data
+MARIADB_DIR=$(DATA_DIR)/mariadb
+WORDPRESS_DIR=$(DATA_DIR)/wordpress
 
 # Docker Compose File
 COMPOSE_FILE=srcs/docker-compose.yml
 
 # Targets
 all: mariadb_data wordpress_data
-#	@echo "$(YELLOW)==> Creating MariaDB data directory...$(RESET)"
-#	@mkdir -p $(MARIADB_DIR)
-#	@echo "$(YELLOW)==> Creating WordPress data directory...$(RESET)"
-#	@mkdir -p $(WORDPRESS_DIR)
-#	@echo "$(YELLOW)==> Building and starting containers...$(RESET)"
+	@echo "$(YELLOW)==> Creating MariaDB data directory...$(RESET)"
+	@mkdir -p $(MARIADB_DIR)
+	@echo "$(YELLOW)==> Creating WordPress data directory...$(RESET)"
+	@mkdir -p $(WORDPRESS_DIR)
+	@echo "$(YELLOW)==> Building and starting containers...$(RESET)"
 	@$(MAKE) images
 	@$(MAKE) up
 	@echo "$(GREEN)==> Done!$(RESET)"
@@ -42,7 +42,7 @@ clean:
 
 fclean: clean
 	@echo "$(RED)==> Removing data directories...$(RESET)"
-#	@sudo rm -rf $(DATA_DIR)
+	@sudo rm -rf $(DATA_DIR)
 	@docker system prune -f --volumes
 
 re: fclean all

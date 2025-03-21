@@ -13,10 +13,6 @@ RUN openssl req -x509 -nodes \
 
 RUN adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
 
-RUN mkdir -p /var/www/html
-
-RUN echo "<h1>NGINX toimii!</h1>" > /var/www/html/index.html
-
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 RUN chmod 644 /etc/nginx/nginx.conf
 
