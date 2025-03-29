@@ -1,25 +1,21 @@
-# Colors
 RESET=$(shell echo -e "\033[0m")
 GREEN=$(shell echo -e "\033[1;32m")
 BLUE=$(shell echo -e "\033[1;34m")
-YELLOW=$(shell echo -e "\033[1;33m")
+CYAN=$(shell echo -e "\033[1;36m")
 RED=$(shell echo -e "\033[1;31m")
 
-# Paths
 DATA_DIR=/home/vvaalant/data
 MARIADB_DIR=$(DATA_DIR)/mariadb
 WORDPRESS_DIR=$(DATA_DIR)/wordpress
 
-# Docker Compose File
 COMPOSE_FILE=srcs/docker-compose.yml
 
-# Targets
 all: mariadb_data wordpress_data
-	@echo "$(YELLOW)==> Creating MariaDB data directory...$(RESET)"
+	@echo "$(CYAN)==> Creating MariaDB data directory...$(RESET)"
 	@mkdir -p $(MARIADB_DIR)
-	@echo "$(YELLOW)==> Creating WordPress data directory...$(RESET)"
+	@echo "$(CYAN)==> Creating WordPress data directory...$(RESET)"
 	@mkdir -p $(WORDPRESS_DIR)
-	@echo "$(YELLOW)==> Building and starting containers...$(RESET)"
+	@echo "$(CYAN)==> Building and starting containers...$(RESET)"
 	@$(MAKE) images
 	@$(MAKE) up
 	@echo "$(GREEN)==> Done!$(RESET)"
